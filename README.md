@@ -1,34 +1,35 @@
-# Modern Animated Portfolio
+# Modern Professional Portfolio
 
-A premium, high-performance portfolio website built with **React**, **Vite**, and **Framer Motion**. Featuring a sophisticated minimal aesthetic, ultra-spacious layout, and a custom IBM Plex Serif typography system.
+A premium, high-performance portfolio website built with **React**, **Vite**, and **Tailwind CSS v4**. Featuring a sophisticated "MakePresentable" minimal aesthetic, light-theme focus, and elegant motion systems.
 
 ## 🚀 Features
 
-- **Dynamic Typography**: Custom-built `TypingEffect` for engaging hero-section storytelling.
-- **Ultra-Spacious Design**: A layout focused on "breathing room" and typographic rhythm, inspired by premium digital portfolios.
-- **Vibrant Accents**: A high-contrast palette of **Vivid Red** and **Neon Violet** against a deep charcoal background.
-- **Component-Driven Architecture**: Modular React components including:
-  - **Hero**: Balanced centered layout with dynamic role typing.
-  - **Projects**: Alternating grid with detailed case study placeholders.
-  - **Research**: Academic lab section highlighting publications and ongoing studies.
-  - **Technical Toolkit**: Categorized skill matrix with subtle interactive glow effects.
-  - **Certifications**: 3D-tilt enabled cards for academic credentials.
-- **Smooth Interactions**: buttery-smooth scroll animations via Framer Motion.
+- **MakePresentable Aesthetic**: Clean, light-themed, and professional design focused on clarity and readability.
+- **Dynamic Storytelling**: Custom-built `TypingEffect` in the Hero section for an engaging personal introduction.
+- **Modern Typography**: High-end typographic hierarchy using **Space Grotesk** for headings and **Inter** for body text.
+- **Component Architecture**:
+  - **Hero**: Clean two-column layout with a floating abstract visual.
+  - **About**: Narrative-driven section with a professional profile photo featuring a custom **grayscale-to-color hover effect**.
+  - **Projects**: Refined minimalist card grid with soft shadows and elevation transitions.
+  - **Research**: Dedicated academic showcase for publications and cybersecurity studies.
+  - **Skills**: Structured categorization of technical expertise with a unified blue-accented UI.
+- **Fluid Motion**: Subtle scroll-triggered reveal animations and smooth internal navigation.
+- **Branding**: Custom-built "AS ." branding integrated into the Navbar, Footer, and Favicon.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: [React](https://reactjs.org/)
-- **Build Tool**: [Vite](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Frontend**: [React 19](https://reactjs.org/)
+- **Build Tool**: [Vite 7](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Typography**: [IBM Plex Serif](https://fonts.google.com/specimen/IBM+Plex+Serif) via Google Fonts
+- **Typography**: [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) & [Inter](https://fonts.google.com/specimen/Inter)
 
 ## 📦 Getting Started
 
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- npm or yarn
+- npm, yarn, or pnpm
 
 ### Installation
 
@@ -52,16 +53,17 @@ A premium, high-performance portfolio website built with **React**, **Vite**, an
     ```
 
 4.  **Build for production**
+
     ```bash
     npm run build
     ```
 
-## 🎨 Theme Customization
+## 🎨 Design System
 
-The design system is centralized in:
+The project uses the latest **Tailwind v4** "CSS-first" configuration:
 
-- `tailwind.config.js`: Custom spacing, font-size scales (up to 10xl), and color tokens.
-- `src/index.css`: Global glassmorphism utilities, gradients, and custom scrollbar styles.
+- `src/index.css`: Centralized theme variables, color tokens, and custom utility layers.
+- `src/App.jsx`: Main entry point orchestrating the section-based architectural flow.
 
 ## 📄 License
 
@@ -69,4 +71,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-Built with ❤️ by [Anirbaan Sarkar](https://github.com/yourusername)
+Built with ✨ by [Anirbaan Sarkar](https://github.com/yourusername)

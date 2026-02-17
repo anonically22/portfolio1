@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Section from './Section';
+import profilePic from '../assets/2x4ou0.jpg';
 
 const About = () => {
   return (
@@ -16,9 +17,9 @@ const About = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-accent-blue/10 to-transparent" />
             <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
+              src={profilePic} 
               alt="Anirbaan Sarkar" 
-              className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
           </motion.div>
 

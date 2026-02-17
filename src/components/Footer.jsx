@@ -12,7 +12,9 @@ const Footer = () => {
           className="flex flex-col md:flex-row justify-between items-center gap-10"
         >
           <div className="space-y-2 text-center md:text-left">
-            <h4 className="text-xl font-display font-bold text-foreground">AS <span className="text-accent-blue">.</span></h4>
+            <h4 className="text-2xl font-display font-bold text-foreground flex items-center gap-1 justify-center md:justify-start">
+              AS<span className="w-2 h-2 rounded-full bg-accent-blue mt-2" />
+            </h4>
             <p className="text-sm text-muted font-light">© 2026 Anirbaan Sarkar. All rights reserved.</p>
           </div>
 

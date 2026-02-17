@@ -29,8 +29,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex justify-between items-center">
-        <a href="#hero" className="text-xl font-display font-bold tracking-tight text-foreground">
-          AS <span className="text-accent-blue">.</span>
+        <a href="#hero" className="text-2xl font-display font-bold tracking-tighter text-foreground flex items-center gap-1">
+          AS<span className="w-2 h-2 rounded-full bg-accent-blue mt-2" />
         </a>
 
         <div className="hidden md:flex items-center gap-8">
