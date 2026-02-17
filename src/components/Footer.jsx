@@ -2,41 +2,34 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-dark-lighter border-t border-dark-border py-24 px-6 md:px-12 lg:px-24">
-      <div className="container mx-auto">
+    <footer className="bg-background border-t border-border py-12 md:py-20">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="flex flex-col md:flex-row justify-between items-start gap-16"
+          className="flex flex-col md:flex-row justify-between items-center gap-10"
         >
-          <div className="space-y-4">
-             <h4 className="text-4xl font-serif font-bold text-white tracking-tighter">Anirbaan.</h4>
-             <p className="text-xl text-text-muted font-light italic">Designing systems for the digital age.</p>
+          <div className="space-y-2 text-center md:text-left">
+            <h4 className="text-xl font-display font-bold text-foreground">AS <span className="text-accent-blue">.</span></h4>
+            <p className="text-sm text-muted font-light">© 2026 Anirbaan Sarkar. All rights reserved.</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-24">
-            <div className="space-y-6">
-              <span className="text-xs font-bold tracking-[0.5em] text-accent-red uppercase">Navigation</span>
-              <ul className="space-y-4 text-xl font-medium text-text-secondary">
-                <li className="opacity-50 line-through">Surface</li>
-                <li className="opacity-50 line-through">Context</li>
-                <li className="opacity-50 line-through">Case Studies</li>
-              </ul>
-            </div>
-            
-            <div className="space-y-6">
-              <span className="text-xs font-bold tracking-[0.5em] text-accent-violet uppercase">Legal</span>
-              <p className="text-xl font-medium text-text-secondary opacity-50">© 2026</p>
-            </div>
+          <div className="flex items-center gap-10">
+            <p className="text-xs font-bold tracking-[0.3em] text-muted uppercase">
+              Built with <span className="text-accent-blue">React</span> + <span className="text-foreground">Motion</span>
+            </p>
           </div>
+
+          <motion.a
+            href="#hero"
+            whileHover={{ y: -5 }}
+            className="text-xs font-bold tracking-[0.5em] text-foreground hover:text-accent-blue transition-colors uppercase border-b border-border hover:border-accent-blue pb-1"
+          >
+            Back to Top ↑
+          </motion.a>
         </motion.div>
-
-        <div className="mt-40 pt-12 border-t border-dark-border flex flex-col md:flex-row justify-between gap-8">
-           <p className="text-sm tracking-[0.3em] text-text-muted uppercase">Designed by AS / Built with React + Motion</p>
-           <p className="text-sm font-serif italic text-text-muted">Rooted in User Needs.</p>
-        </div>
       </div>
     </footer>
   );

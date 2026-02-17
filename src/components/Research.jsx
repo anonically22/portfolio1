@@ -5,81 +5,79 @@ const Research = () => {
   const research = [
     {
       id: 1,
-      title: "Cyber Security Research",
+      title: "Advanced Threat Detection in Cybersecurity",
       supervisor: "Dr. Anindya Kumar Biswas",
-      description: "Conducting advanced research in cybersecurity, focusing on threat detection, vulnerability assessment, and security protocols.",
+      description: "Exploring vulnerability assessment protocols and proactive monitoring systems for complex digital infrastructures.",
       status: "Ongoing",
-      year: "2024-Present"
+      tag: "Security Research"
     },
     {
       id: 2,
-      title: "Academic Integrity Publication",
+      title: "Academic Integrity in Digital Learning",
       publication: "Academic Integrity Book Chapter",
-      description: "Contributed research on maintaining academic standards and integrity in digital learning environments.",
+      description: "Analysis of maintaining academic standards and ethics within remote and AI-assisted educational environments.",
       status: "Published",
-      year: "2024"
+      tag: "Bio-Ethics"
     }
   ];
 
   return (
-    <Section id="research" className="bg-dark-lighter py-64">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-40"
-        >
-          <h2 className="text-display-lg md:text-display-xl font-serif font-bold mb-12 tracking-tight">
-            Research <span className="gradient-text">Lab.</span>
-          </h2>
-          <div className="w-48 h-1 bg-gradient-to-r from-accent-red to-accent-violet" />
-        </motion.div>
+    <Section id="research" className="bg-background">
+      <div className="container">
+        <div className="mb-20 space-y-4">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-accent-blue font-display font-semibold tracking-wide uppercase text-sm"
+          >
+            Insights & Discovery
+          </motion.p>
+          <h2 className="text-display-lg font-bold">Academic Contributions.</h2>
+        </div>
 
-        <div className="space-y-40">
+        <div className="grid lg:grid-cols-2 gap-12">
           {research.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className={`flex flex-col md:flex-row gap-20 items-start ${
-                index % 2 !== 0 ? 'md:flex-row-reverse' : ''
-              }`}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="p-10 bg-accent-light/20 rounded-3xl border border-accent-blue/5 hover:border-accent-blue/20 transition-colors group"
             >
-              <div className="w-full md:w-1/2 space-y-12">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-6">
-                    <span className="text-accent-red font-bold tracking-[0.4em] text-sm uppercase">
-                      {item.status}
-                    </span>
-                    <div className="h-[1px] flex-1 bg-dark-border" />
-                    <span className="text-text-muted font-medium">{item.year}</span>
-                  </div>
-                  <h3 className="text-5xl md:text-6xl font-serif font-bold leading-tight">
-                    {item.title}
-                  </h3>
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-bold tracking-[0.3em] text-accent-blue uppercase">
+                    {item.status}
+                  </span>
+                  <span className="text-[10px] font-bold text-muted uppercase tracking-[0.2em] px-3 py-1 bg-white rounded-full border border-border">
+                    {item.tag}
+                  </span>
+                </div>
+                
+                <h3 className="text-3xl font-bold leading-tight group-hover:text-accent-blue transition-colors">
+                  {item.title}
+                </h3>
+
+                <div className="space-y-4">
+                   {item.supervisor && (
+                     <p className="text-sm font-semibold text-foreground italic">Under: {item.supervisor}</p>
+                   )}
+                   {item.publication && (
+                     <p className="text-sm font-semibold text-accent-blue italic">{item.publication}</p>
+                   )}
+                   <p className="text-lg text-muted font-light leading-relaxed">
+                     {item.description}
+                   </p>
                 </div>
 
-                <div className="space-y-6">
-                  {item.supervisor && (
-                    <p className="text-2xl text-accent-violet font-medium italic">
-                      Under: {item.supervisor}
-                    </p>
-                  )}
-                  {item.publication && (
-                    <p className="text-2xl text-accent-cyan font-medium italic">
-                      {item.publication}
-                    </p>
-                  )}
-                  <p className="text-2xl text-text-secondary leading-relaxed font-light opacity-80">
-                    {item.description}
-                  </p>
+                <div className="pt-6">
+                  <span className="text-xs font-bold tracking-widest text-foreground/40 uppercase group-hover:text-accent-blue transition-colors">
+                    Explore Abstract →
+                  </span>
                 </div>
               </div>
-              <div className="hidden md:block w-1/4 h-[1px] bg-dark-border mt-16" />
             </motion.div>
           ))}
         </div>

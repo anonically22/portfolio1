@@ -1,80 +1,56 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import Section from './Section';
 import { skills, skillCategories } from '../data/skills';
 
 const Skills = () => {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
-
-  const getColor = (color) => {
-    if (color === 'blue') return 'red';
-    return color;
-  };
-
   return (
-    <Section id="skills" className="bg-dark py-64">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-40"
-        >
-          <h2 className="text-display-lg md:text-display-xl font-serif font-bold mb-12 tracking-tight">
-            Technical <span className="gradient-text">Proficiencies.</span>
-          </h2>
-          <div className="w-48 h-1 bg-gradient-to-r from-accent-red to-accent-violet" />
-        </motion.div>
+    <Section id="skills" className="bg-accent-light/10">
+      <div className="container">
+        <div className="mb-20 space-y-4">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-accent-blue font-display font-semibold tracking-wide uppercase text-sm"
+          >
+            Technical Stack
+          </motion.p>
+          <h2 className="text-display-lg font-bold">Tools & Tech.</h2>
+        </div>
 
-        <div className="space-y-40">
-          {skillCategories.map((category, categoryIndex) => {
-            const activeColor = getColor(category.color);
-            return (
-              <motion.div
-                key={category.key}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
-                className="grid lg:grid-cols-12 gap-12 items-start"
-              >
-                <div className="lg:col-span-4">
-                  <h3 className="text-4xl font-serif font-bold flex items-center gap-6">
-                    <span className={`w-4 h-4 rounded-full bg-accent-${activeColor}`} />
-                    {category.name}
-                  </h3>
-                </div>
-
-                <div className="lg:col-span-8 flex flex-wrap gap-8">
-                  {skills[category.key].map((skill, skillIndex) => (
-                    <motion.div
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        duration: 0.4, 
-                        delay: categoryIndex * 0.1 + skillIndex * 0.05 
-                      }}
-                      onMouseEnter={() => setHoveredSkill(skill)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                      className={`
-                        glass px-10 py-5 rounded-full font-medium cursor-default
-                        border-2 transition-all duration-500 text-2xl
-                        ${hoveredSkill === skill 
-                          ? `border-accent-${activeColor} text-accent-${activeColor} scale-110` 
-                          : 'border-dark-border text-text-secondary opacity-60 hover:opacity-100'
-                        }
-                      `}
-                    >
+        <div className="grid lg:grid-cols-2 gap-20">
+          {skillCategories.map((category, catIndex) => (
+            <motion.div
+              key={category.key}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: catIndex * 0.1 }}
+              className="space-y-8"
+            >
+              <h3 className="text-2xl font-bold flex items-center gap-4">
+                <span className={`w-3 h-3 rounded-full bg-accent-blue`} />
+                {category.name}
+              </h3>
+              
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                {skills[category.key].map((skill, skillIndex) => (
+                  <motion.div
+                    key={skill}
+                    whileHover={{ y: -5, borderColor: '#2563EB' }}
+                    className="p-5 bg-white border border-border rounded-2xl shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-all group"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-accent-light flex items-center justify-center group-hover:bg-accent-blue/10 transition-colors">
+                      <span className="text-foreground font-bold text-xs">{skill.substring(0, 2).toUpperCase()}</span>
+                    </div>
+                    <span className="text-sm font-medium text-muted group-hover:text-foreground transition-colors">
                       {skill}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </Section>

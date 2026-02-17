@@ -1,109 +1,104 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import TypingEffect from './TypingEffect';
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   const interests = [
-    "a CSE student.",
-    "a UI/UX enthusiast.",
-    "a Full Stack builder.",
-    "a Researcher.",
-    "an AI explorer."
+    "a Computer Science student.",
+    "a UI/UX designer.",
+    "a Web developer.",
+    "a Researcher."
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark px-6 py-32">
-      {/* Balanced Background Mesh */}
-      <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-            transform: `translate(${mousePosition.x * 5}px, ${mousePosition.y * 5}px)`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark via-transparent to-dark" />
-      </div>
-
-      <div className="container mx-auto relative z-10">
+    <section id="hero" className="relative min-h-[90vh] flex items-center bg-background overflow-hidden border-b border-border">
+      {/* Soft Background Accent */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-accent-light/50 to-transparent pointer-events-none" />
+      
+      <div className="container relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+        {/* Left: Content */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center space-y-12 max-w-5xl mx-auto"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-8"
         >
-          <motion.div variants={itemVariants}>
-            <span className="text-xs font-bold tracking-[0.6em] text-accent-red uppercase block mb-6">
-              Hello!
-            </span>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white tracking-tight leading-tight">
-              I'm <span className="gradient-text">Anirbaan Sarkar.</span>
+          <div className="space-y-4">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-accent-blue font-display font-semibold tracking-wide uppercase text-sm"
+            >
+              Building with intelligence
+            </motion.p>
+            <h1 className="text-display-xl font-bold leading-none">
+              Anirbaan Sarkar <span className="text-accent-blue font-light">.</span>
             </h1>
-          </motion.div>
-
-          <motion.div 
-            variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-serif text-text-secondary font-light"
-          >
-            I'm <TypingEffect words={interests} />
-          </motion.div>
+            <div className="text-3xl md:text-4xl text-muted font-light leading-tight">
+              Designing thoughtful experiences <br className="hidden md:block" />
+              as <TypingEffect words={interests} />
+            </div>
+          </div>
 
           <motion.p
-            variants={itemVariants}
-            className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed font-light italic opacity-80"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-xl text-muted max-w-xl font-light leading-relaxed"
           >
-            Passionately creating innovative digital experiences, rooted in user needs and complex system thinking.
+            A Computer Science student obsessive about the intersection of code and aesthetics, dedicated to building systems that are both functional and emotionally resonant.
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex items-center gap-6"
+          >
+            <a
+              href="#projects"
+              className="px-8 py-4 bg-foreground text-background font-medium rounded-full hover:bg-foreground/90 transition-all hover:shadow-lg hover:-translate-y-1"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-accent-light transition-all"
+            >
+              Let's talk
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Right: Visual Illustration */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="hidden lg:block relative"
+        >
+          <div className="w-full aspect-square relative">
+            <motion.div
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-0 bg-gradient-to-tr from-accent-blue/20 via-accent-light to-white rounded-[40%_60%_70%_30%] blur-3xl"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-64 h-64 border border-accent-blue/10 rounded-full animate-float" />
+              <div className="absolute w-48 h-48 border border-accent-blue/5 rounded-full animate-float" style={{ animationDelay: '1s' }} />
+            </div>
+          </div>
         </motion.div>
       </div>
 
-      {/* Minimal Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-text-muted opacity-40 hover:opacity-100 transition-opacity"
+        animate={{ opacity: 0.5 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
-        <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Explore</span>
-        <div className="w-[1px] h-16 bg-gradient-to-b from-accent-red to-transparent" />
+        <div className="w-[1px] h-12 bg-gradient-to-b from-foreground to-transparent" />
       </motion.div>
     </section>
   );

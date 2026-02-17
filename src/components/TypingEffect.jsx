@@ -32,7 +32,7 @@ const TypingEffect = ({ words, speed = 100, delay = 2000 }) => {
   return (
     <span className="relative">
       {currentText}
-      <span className="ml-1 border-r-4 border-accent-red animate-pulse" />
+      <span className="ml-1 border-r-4 border-accent-blue animate-pulse" />
     </span>
   );
 };

@@ -3,73 +3,45 @@ import Section from './Section';
 
 const Contact = () => {
   return (
-    <Section id="contact" className="bg-dark min-h-screen py-64 flex items-center">
-      <div className="container mx-auto text-center">
+    <Section id="contact" className="bg-foreground text-background">
+      <div className="container py-20 md:py-32">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-40"
+          className="max-w-4xl mx-auto text-center space-y-12"
         >
-          <div className="space-y-12">
-            <motion.h2 
-              className="text-display-xl md:text-display-2xl font-serif font-bold leading-none tracking-tighter"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              Let's Build
-              <br />
-              <span className="gradient-text">Intelligent Stuff.</span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-3xl md:text-4xl text-text-secondary max-w-4xl mx-auto font-light italic opacity-70 leading-relaxed"
-            >
-              Always open to discussing innovative projects, research collaborations, or architectural systems.
-            </motion.p>
+          <div className="space-y-6">
+            <h2 className="text-display-xl font-bold leading-none tracking-tight text-white">
+              Let’s build something <br />
+              <span className="text-accent-blue italic">together.</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-muted/80 max-w-2xl mx-auto font-light leading-relaxed">
+              Open to collaborating on innovative projects, research initiatives, or architectural challenges.
+            </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col items-center gap-12"
-          >
-            <div className="text-xl text-text-muted tracking-[0.8em] font-medium uppercase mb-8">
-              Channels Archived
-            </div>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 pt-6">
+            <a
+              href="mailto:anirbaansarkar.dev@gmail.com"
+              className="px-10 py-5 bg-accent-blue text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-all hover:-translate-y-1 text-lg"
+            >
+              Get in Touch
+            </a>
             
-            <div className="flex flex-wrap justify-center gap-16 opacity-30 grayscale pointer-events-none">
-              {['GitHub', 'LinkedIn', 'Email'].map((channel) => (
-                <div key={channel} className="text-3xl font-serif font-bold tracking-tighter hover:text-accent-red cursor-default">
-                  {channel}.
-                </div>
+            <div className="flex items-center gap-8">
+              {['GitHub', 'LinkedIn'].map((platform) => (
+                <a
+                  key={platform}
+                  href="#"
+                  className="text-lg font-medium text-muted hover:text-white transition-colors relative group"
+                >
+                  {platform}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-accent-blue group-hover:w-full transition-all duration-300" />
+                </a>
               ))}
             </div>
-          </motion.div>
-
-          {/* Large Abstract Decorative Background */}
-          <div className="absolute inset-0 pointer-events-none z-0 opacity-5">
-             <motion.div 
-               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-accent-red via-accent-violet to-transparent rounded-full"
-               animate={{
-                 scale: [1, 1.1, 1],
-                 opacity: [0.3, 0.5, 0.3]
-               }}
-               transition={{
-                 duration: 10,
-                 repeat: Infinity,
-                 ease: "easeInOut"
-               }}
-             />
           </div>
         </motion.div>
       </div>

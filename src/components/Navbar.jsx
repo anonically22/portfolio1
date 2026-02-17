@@ -13,44 +13,43 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'PROJECTS', href: '#projects' },
-    { name: 'ABOUT ME', href: '#about' },
-    { name: 'RESEARCH', href: '#research' },
-    { name: 'CONTACT', href: '#contact' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'About', href: '#about' },
+    { name: 'Research', href: '#research' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 py-6 ${
-        scrolled ? 'bg-dark/80 backdrop-blur-md py-4' : 'bg-transparent'
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white/80 backdrop-blur-md border-b border-border py-4' : 'bg-transparent py-6'
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
-        <a href="#hero" className="text-2xl font-serif font-bold tracking-widest text-white">
-          || अनिरबान ||
+      <div className="container flex justify-between items-center">
+        <a href="#hero" className="text-xl font-display font-bold tracking-tight text-foreground">
+          AS <span className="text-accent-blue">.</span>
         </a>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-xs font-bold tracking-[0.2em] text-text-secondary hover:text-white transition-colors"
+              className="text-sm font-medium text-muted hover:text-foreground transition-colors"
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        {/* Mobile Menu Icon (Simplified) */}
-        <div className="md:hidden text-white font-bold text-xs tracking-widest">
-          MENU
-        </div>
+        <button className="md:hidden text-foreground">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
       </div>
     </motion.nav>
   );

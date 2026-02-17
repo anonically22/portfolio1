@@ -17,6 +17,7 @@ function App() {
       if (target) {
         e.preventDefault();
         const id = target.getAttribute('href').slice(1);
+        if (!id) return;
         const element = document.getElementById(id);
         if (element) {
           element.scrollIntoView({
@@ -32,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative bg-dark">
+    <div className="relative bg-background">
       <Navbar />
       <Hero />
       <About />

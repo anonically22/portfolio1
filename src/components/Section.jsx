@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const Section = ({ 
@@ -16,10 +15,14 @@ const Section = ({
     <motion.section
       ref={ref}
       id={id}
-      className={`py-48 px-6 md:px-12 lg:px-24 ${className}`}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay }}
+      className={`section-padding ${className}`}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ 
+        duration: 0.8, 
+        delay,
+        ease: [0.16, 1, 0.3, 1]
+      }}
       {...props}
     >
       {children}

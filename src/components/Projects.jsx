@@ -4,73 +4,56 @@ import { projects } from '../data/projects';
 
 const Projects = () => {
   return (
-    <Section id="projects" className="bg-dark py-64">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-40"
-        >
-          <h2 className="text-display-lg md:text-display-xl font-serif font-bold mb-12 tracking-tight">
-            Selected <span className="gradient-text">Case Studies.</span>
-          </h2>
-          <div className="w-48 h-1 bg-gradient-to-r from-accent-red to-accent-violet mb-12" />
-        </motion.div>
+    <Section id="projects" className="bg-accent-light/30">
+      <div className="container">
+        <div className="mb-20 space-y-4">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-accent-blue font-display font-semibold tracking-wide uppercase text-sm"
+          >
+            Selected Work
+          </motion.p>
+          <h2 className="text-display-lg font-bold">Featured Case Studies.</h2>
+        </div>
 
-        <div className="space-y-64">
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`grid lg:grid-cols-12 gap-24 items-center ${
-                index % 2 !== 0 ? 'lg:flex-row-reverse' : ''
-              }`}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="group cursor-pointer"
             >
-              {/* Project Image Placeholder */}
-              <div className={`lg:col-span-7 aspect-[16/10] bg-dark-lighter relative overflow-hidden group border border-dark-border ${
-                 index % 2 !== 0 ? 'lg:order-2' : ''
-              }`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-red/5 to-accent-violet/5 group-hover:opacity-20 transition-opacity duration-500" />
-                <div className="absolute inset-x-0 bottom-0 p-12 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-10 group-hover:translate-y-0">
-                  <div className="flex flex-wrap gap-4">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="text-sm font-bold tracking-widest text-accent-red uppercase">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              <div className="relative aspect-[16/10] bg-white rounded-2xl overflow-hidden shadow-sm border border-border group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 flex items-center justify-center p-8">
+                   {/* Placeholder for project image */}
+                   <span className="text-muted text-xs font-medium uppercase tracking-widest">{project.category}</span>
                 </div>
               </div>
 
-              {/* Project Info */}
-              <div className={`lg:col-span-5 space-y-10 ${
-                index % 2 !== 0 ? 'lg:order-1' : ''
-              }`}>
-                <div className="space-y-4">
-                  <span className="text-accent-violet font-bold tracking-[0.5em] text-sm uppercase">
-                    0{index + 1} / {project.category}
-                  </span>
-                  <h3 className="text-5xl md:text-6xl font-serif font-bold leading-tight">
+              <div className="mt-8 space-y-3">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-2xl font-bold group-hover:text-accent-blue transition-colors">
                     {project.title}
                   </h3>
+                  <span className="text-xs font-semibold text-muted tracking-widest uppercase py-1 px-3 border border-border rounded-full">
+                    {project.role}
+                  </span>
                 </div>
-
-                <p className="text-2xl text-text-secondary leading-relaxed font-light italic opacity-80">
+                <p className="text-muted text-lg font-light leading-relaxed">
                   {project.description}
                 </p>
-
-                <div className="pt-10 border-t border-dark-border">
-                  <div className="flex items-center gap-6 group cursor-default">
-                    <span className="text-sm font-bold tracking-[0.3em] text-text-muted transition-colors">
-                      CASE STUDY ARCHIVED
+                <div className="flex flex-wrap gap-3 pt-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="text-xs font-medium text-foreground/60 bg-white border border-border px-3 py-1 rounded-full">
+                      {tag}
                     </span>
-                    <div className="w-12 h-[1px] bg-dark-border" />
-                  </div>
+                  ))}
                 </div>
               </div>
             </motion.div>

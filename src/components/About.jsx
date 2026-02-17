@@ -1,115 +1,65 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Section from './Section';
 
-const AnimatedCounter = ({ end, duration = 2 }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let startTime;
-    let animationFrame;
-
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = (timestamp - startTime) / (duration * 1000);
-
-      if (progress < 1) {
-        setCount(Math.floor(end * progress));
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, end, duration]);
-
-  return <span ref={ref}>{count}</span>;
-};
-
 const About = () => {
-  const stats = [
-    { label: 'Projects', value: 6, suffix: '+' },
-    { label: 'Technologies', value: 20, suffix: '+' },
-    { label: 'Research Papers', value: 1, suffix: '' },
-    { label: 'Certifications', value: 3, suffix: '' },
-  ];
-
   return (
-    <Section id="about" className="bg-dark-lighter py-64">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-40"
-        >
-          <h2 className="text-display-lg md:text-display-xl font-serif font-bold mb-12 tracking-tight">
-            The <span className="gradient-text">Context.</span>
-          </h2>
-          <div className="w-48 h-1 bg-gradient-to-r from-accent-red to-accent-violet" />
-        </motion.div>
-
-        <div className="grid lg:grid-cols-12 gap-24 items-start">
-          {/* Left: Story */}
+    <Section id="about" className="bg-background">
+      <div className="container">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+          {/* Left: Professional Photo Placeholder / Image */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7 space-y-12"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-accent-light"
           >
-            <p className="text-4xl md:text-5xl text-text-primary leading-tight font-light">
-              I'm a <span className="text-accent-red font-medium">CSE student</span> at Techno India University, obsessive about the intersection of code and aesthetics.
-            </p>
-            <p className="text-2xl md:text-3xl text-text-secondary leading-relaxed font-light italic opacity-80">
-              My work focuses on AI systems, UX-first product development, and cybersecurity research. I believe in technology that's not just functional, but emotionally resonant.
-            </p>
-            
-            <div className="flex flex-wrap gap-6 pt-12">
-              {['AI & ML', 'Full Stack', 'UI/UX Design', 'Research'].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-8 py-3 glass text-accent-red border border-accent-red/20 rounded-full text-lg font-medium"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent-blue/10 to-transparent" />
+            <img 
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
+              alt="Anirbaan Sarkar" 
+              className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
+            />
           </motion.div>
 
-          {/* Right: Stats */}
+          {/* Right: Intro Paragraph */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 grid grid-cols-1 gap-12"
+            className="space-y-10"
           >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group border-b border-dark-border pb-12 last:border-0"
-              >
-                <div className="text-7xl md:text-8xl font-bold text-white mb-4 flex items-baseline gap-2">
-                  <AnimatedCounter end={stat.value} />
-                  <span className="text-accent-violet">{stat.suffix}</span>
-                </div>
-                <div className="text-xl text-text-muted uppercase tracking-[0.4em] font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+            <div className="space-y-4">
+              <h2 className="text-display-md font-bold">
+                Designing with intention, <br />
+                building with intelligence.
+              </h2>
+              <div className="w-20 h-1 bg-accent-blue" />
+            </div>
+
+            <div className="space-y-6 text-xl text-muted font-light leading-relaxed">
+              <p>
+                I am <span className="text-foreground font-medium">Anirbaan Sarkar</span>, a Computer Science student at Techno India University. My journey in technology is driven by a deep-seated passion for the intersection of logic and aesthetics.
+              </p>
+              <p>
+                As a UI/UX designer and web developer, I believe that great products are built on a foundation of empathy and rigorous research. I strive to create experiences that are not only visually stunning but also solve real-world problems through thoughtful design systems and robust engineering.
+              </p>
+              <p>
+                Beyond code, I am actively involved in cybersecurity research, exploring vulnerability assessment and threat detection protocols under expert guidance.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 pt-6">
+              <div>
+                <h4 className="font-display font-bold text-lg mb-2">Philosophy</h4>
+                <p className="text-muted text-sm leading-relaxed">UX-first development where empathy leads the engineering process.</p>
+              </div>
+              <div>
+                <h4 className="font-display font-bold text-lg mb-2">Education</h4>
+                <p className="text-muted text-sm leading-relaxed">B.Tech in Computer Science & Engineering, Techno India University.</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
