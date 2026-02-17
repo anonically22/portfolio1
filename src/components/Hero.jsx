@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import TypingEffect from './TypingEffect';
 
 const Hero = () => {
+  const [nameDone, setNameDone] = useState(false);
   const interests = [
     "a Computer Science student.",
     "a UI/UX designer.",
@@ -31,13 +33,24 @@ const Hero = () => {
             >
               Building with intelligence
             </motion.p>
-            <h1 className="text-[clamp(3rem,10vw,8.5rem)] font-bold leading-[0.85] tracking-tighter">
-              <TypingEffect words={["Anirbaan Sarkar"]} speed={100} loop={true} /> <span className="text-accent-blue font-light">.</span>
+            <h1 className="text-[clamp(3rem,11vw,9rem)] font-bold leading-[0.8] tracking-tighter">
+              <TypingEffect 
+                words={["Anirbaan\nSarkar"]} 
+                speed={150} 
+                delay={4000} 
+                loop={true} 
+                onComplete={() => setNameDone(true)}
+              /> <span className="text-accent-blue font-light">.</span>
             </h1>
-            <div className="text-2xl md:text-4xl text-muted font-light leading-tight">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: nameDone ? 1 : 0 }}
+              transition={{ duration: 1 }}
+              className="text-2xl md:text-3xl text-muted font-light leading-tight"
+            >
               Designing thoughtful experiences <br className="hidden md:block" />
-              as <TypingEffect words={interests} />
-            </div>
+              as <TypingEffect words={interests} start={nameDone} speed={120} />
+            </motion.div>
           </div>
 
           <motion.p

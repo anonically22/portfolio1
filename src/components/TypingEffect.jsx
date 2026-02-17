@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const TypingEffect = ({ words, speed = 100, delay = 2000, loop = true }) => {
+const TypingEffect = ({ words, speed = 100, delay = 2000, loop = true, start = true, onComplete }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    if (!start) return;
+    
     let timer;
     const currentFullWord = words[currentWordIndex];
 
@@ -22,6 +24,7 @@ const TypingEffect = ({ words, speed = 100, delay = 2000, loop = true }) => {
       timer = setTimeout(() => {
         setCurrentText(currentFullWord.substring(0, currentText.length + 1));
         if (currentText === currentFullWord) {
+          if (onComplete) onComplete();
           if (!loop && currentWordIndex === words.length - 1) return;
           timer = setTimeout(() => setIsDeleting(true), delay);
         }
@@ -29,7 +32,7 @@ const TypingEffect = ({ words, speed = 100, delay = 2000, loop = true }) => {
     }
 
     return () => clearTimeout(timer);
-  }, [currentText, isDeleting, currentWordIndex, words, speed, delay, loop]);
+  }, [currentText, isDeleting, currentWordIndex, words, speed, delay, loop, start, onComplete]);
 
   return (
     <span className="relative whitespace-pre-wrap">
