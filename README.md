@@ -2,8 +2,6 @@
 
 A premium, high-performance portfolio website built with **React**, **Vite**, and **Framer Motion**. Featuring a sophisticated minimal aesthetic, ultra-spacious layout, and a custom IBM Plex Serif typography system.
 
-![Portfolio Preview](https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop)
-
 ## 🚀 Features
 
 - **Dynamic Typography**: Custom-built `TypingEffect` for engaging hero-section storytelling.
