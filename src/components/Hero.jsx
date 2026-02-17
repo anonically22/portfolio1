@@ -14,7 +14,7 @@ const Hero = () => {
       {/* Soft Background Accent */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-accent-light/50 to-transparent pointer-events-none" />
       
-      <div className="container relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container relative z-10 grid lg:grid-cols-2 gap-16 items-center pt-24 md:pt-32">
         {/* Left: Content */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -31,10 +31,10 @@ const Hero = () => {
             >
               Building with intelligence
             </motion.p>
-            <h1 className="text-display-xl font-bold leading-none">
-              Anirbaan Sarkar <span className="text-accent-blue font-light">.</span>
+            <h1 className="text-[clamp(3rem,10vw,8.5rem)] font-bold leading-[0.85] tracking-tighter">
+              <TypingEffect words={["Anirbaan Sarkar"]} speed={100} loop={true} /> <span className="text-accent-blue font-light">.</span>
             </h1>
-            <div className="text-3xl md:text-4xl text-muted font-light leading-tight">
+            <div className="text-2xl md:text-4xl text-muted font-light leading-tight">
               Designing thoughtful experiences <br className="hidden md:block" />
               as <TypingEffect words={interests} />
             </div>

@@ -28,7 +28,7 @@ const Projects = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="relative aspect-[16/10] bg-white rounded-2xl overflow-hidden shadow-sm border border-border group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500">
+              <div className="relative aspect-[16/10] bg-white dark:bg-accent-light rounded-2xl overflow-hidden shadow-sm border border-border group-hover:shadow-xl group-hover:-translate-y-2 transition-all duration-500">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute inset-0 flex items-center justify-center p-8">
                    {/* Placeholder for project image */}

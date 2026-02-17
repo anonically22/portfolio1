@@ -19,6 +19,15 @@
   --font-size-display-md: 2.5rem;
 }
 
+/* Dark Theme Variables */
+.dark {
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-muted: #9ca3af;
+  --color-border: #262626;
+  --color-accent-light: #171717;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -30,18 +39,20 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     overflow-x: hidden;
+    @apply transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.025em;
     color: var(--color-foreground);
+    @apply transition-colors duration-300;
   }
 }
 
 @layer components {
   .container {
-    max-width: 80rem; /* 7xl equivalent */
+    max-width: 80rem;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.5rem;
@@ -65,6 +76,11 @@
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .glass-light {
+    background-color: rgba(10, 10, 10, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   .gradient-text {
@@ -104,6 +120,10 @@
 ::-webkit-scrollbar-thumb {
   background: #d1d5db;
   border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
 }
 
 ::-webkit-scrollbar-thumb:hover {

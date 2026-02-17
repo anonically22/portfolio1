@@ -1,74 +1,73 @@
-# Modern Professional Portfolio
+# Professional Portfolio System
 
-A premium, high-performance portfolio website built with **React**, **Vite**, and **Tailwind CSS v4**. Featuring a sophisticated "MakePresentable" minimal aesthetic, light-theme focus, and elegant motion systems.
+A high-performance, minimalist portfolio platform engineered with React, Vite, and Tailwind CSS v4. This project implements a sophisticated design language focused on professional aesthetics, optimized motion systems, and precise typographic hierarchy.
 
-## 🚀 Features
+## Core Features
 
-- **MakePresentable Aesthetic**: Clean, light-themed, and professional design focused on clarity and readability.
-- **Dynamic Storytelling**: Custom-built `TypingEffect` in the Hero section for an engaging personal introduction.
-- **Modern Typography**: High-end typographic hierarchy using **Space Grotesk** for headings and **Inter** for body text.
-- **Component Architecture**:
-  - **Hero**: Clean two-column layout with a floating abstract visual.
-  - **About**: Narrative-driven section with a professional profile photo featuring a custom **grayscale-to-color hover effect**.
-  - **Projects**: Refined minimalist card grid with soft shadows and elevation transitions.
-  - **Research**: Dedicated academic showcase for publications and cybersecurity studies.
-  - **Skills**: Structured categorization of technical expertise with a unified blue-accented UI.
-- **Fluid Motion**: Subtle scroll-triggered reveal animations and smooth internal navigation.
-- **Branding**: Custom-built "AS ." branding integrated into the Navbar, Footer, and Favicon.
+- **Professional Aesthetic**: High-contrast, light-themed design architecture optimized for visual clarity and professional impact.
+- **Dynamic Content Delivery**: Implementation of a custom `TypingEffect` system for progressive character rendering in the hero section.
+- **Engineered Typography**: Advanced typographic scaling utilizing Space Grotesk for display elements and Inter for high-readability body content.
+- **Modular Component Architecture**:
+  - **Hero Interface**: Optimized two-column layout featuring responsive spatial distribution and abstract visual elements.
+  - **Biographical Section**: Narrative-driven interface with integrated asset loading and custom grayscale-to-color transition protocols.
+  - **Project Showcase**: Grid-based display system with shadow-elevation logic and transition states.
+  - **Research Documentation**: Specialized interface for academic publications and cybersecurity research data.
+  - **Technical Matrix**: Categorized technical expertise manifest with a unified branding system.
+- **Advanced Motion Systems**: Performance-optimized scroll reveal animations and synchronized navigation transitions.
+- **Unified Branding**: Comprehensive integration of "AS ." visual identity across navigation, footer, and system favicon.
 
-## 🛠️ Tech Stack
+## Technical Framework
 
-- **Frontend**: [React 19](https://reactjs.org/)
-- **Build Tool**: [Vite 7](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Typography**: [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) & [Inter](https://fonts.google.com/specimen/Inter)
+- **Frontend Environment**: React 19
+- **Build Infrastructure**: Vite 7
+- **Styling Architecture**: Tailwind CSS v4 (CSS-first configuration)
+- **Animation Engine**: Framer Motion
+- **Typeface Systems**: Space Grotesk and Inter
 
-## 📦 Getting Started
+## Deployment and Installation
 
-### Prerequisites
+### Infrastructure Requirements
 
-- Node.js (v18 or higher)
-- npm, yarn, or pnpm
+- Node.js (v18.0.0 or higher)
+- Package Manager (npm, yarn, or pnpm)
 
-### Installation
+### Execution Sequence
 
-1.  **Clone the repository**
+1.  **Clone Documentation**
 
     ```bash
     git clone https://github.com/yourusername/portfolio.git
     cd portfolio
     ```
 
-2.  **Install dependencies**
+2.  **Dependency Initialization**
 
     ```bash
     npm install
     ```
 
-3.  **Run in development mode**
+3.  **Development Environment**
 
     ```bash
     npm run dev
     ```
 
-4.  **Build for production**
-
+4.  **Production Compilation**
     ```bash
     npm run build
     ```
 
-## 🎨 Design System
+## Design Architecture
 
-The project uses the latest **Tailwind v4** "CSS-first" configuration:
+The platform utilizes a modern Tailwind v4 "CSS-first" design system:
 
-- `src/index.css`: Centralized theme variables, color tokens, and custom utility layers.
-- `src/App.jsx`: Main entry point orchestrating the section-based architectural flow.
+- **Variable Definitions**: `src/index.css` contains the centralized theme architecture, color tokens, and utility layers.
+- **System Orchestration**: `src/App.jsx` manages the synchronized section-based architectural flow.
 
-## 📄 License
+## Documentation License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License. Detailed terms are available in the LICENSE file.
 
 ---
 
-Built with ✨ by [Anirbaan Sarkar](https://github.com/yourusername)
+Developed by Anirbaan Sarkar

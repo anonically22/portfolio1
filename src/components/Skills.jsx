@@ -38,7 +38,7 @@ const Skills = () => {
                   <motion.div
                     key={skill}
                     whileHover={{ y: -5, borderColor: '#2563EB' }}
-                    className="p-5 bg-white border border-border rounded-2xl shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-all group"
+                    className="p-5 bg-white dark:bg-accent-light border border-border rounded-2xl shadow-sm text-center flex flex-col items-center justify-center gap-3 transition-all group"
                   >
                     <div className="w-10 h-10 rounded-lg bg-accent-light flex items-center justify-center group-hover:bg-accent-blue/10 transition-colors">
                       <span className="text-foreground font-bold text-xs">{skill.substring(0, 2).toUpperCase()}</span>
