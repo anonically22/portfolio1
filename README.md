@@ -1,16 +1,74 @@
-# React + Vite
+# Modern Animated Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, high-performance portfolio website built with **React**, **Vite**, and **Framer Motion**. Featuring a sophisticated minimal aesthetic, ultra-spacious layout, and a custom IBM Plex Serif typography system.
 
-Currently, two official plugins are available:
+![Portfolio Preview](https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- **Dynamic Typography**: Custom-built `TypingEffect` for engaging hero-section storytelling.
+- **Ultra-Spacious Design**: A layout focused on "breathing room" and typographic rhythm, inspired by premium digital portfolios.
+- **Vibrant Accents**: A high-contrast palette of **Vivid Red** and **Neon Violet** against a deep charcoal background.
+- **Component-Driven Architecture**: Modular React components including:
+  - **Hero**: Balanced centered layout with dynamic role typing.
+  - **Projects**: Alternating grid with detailed case study placeholders.
+  - **Research**: Academic lab section highlighting publications and ongoing studies.
+  - **Technical Toolkit**: Categorized skill matrix with subtle interactive glow effects.
+  - **Certifications**: 3D-tilt enabled cards for academic credentials.
+- **Smooth Interactions**: buttery-smooth scroll animations via Framer Motion.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: [React](https://reactjs.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Typography**: [IBM Plex Serif](https://fonts.google.com/specimen/IBM+Plex+Serif) via Google Fonts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1.  **Clone the repository**
+
+    ```bash
+    git clone https://github.com/yourusername/portfolio.git
+    cd portfolio
+    ```
+
+2.  **Install dependencies**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Run in development mode**
+
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production**
+    ```bash
+    npm run build
+    ```
+
+## 🎨 Theme Customization
+
+The design system is centralized in:
+
+- `tailwind.config.js`: Custom spacing, font-size scales (up to 10xl), and color tokens.
+- `src/index.css`: Global glassmorphism utilities, gradients, and custom scrollbar styles.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+Built with ❤️ by [Anirbaan Sarkar](https://github.com/yourusername)
