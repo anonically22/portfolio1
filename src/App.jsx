@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,9 +10,13 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-function App() {
+// Admin Imports
+import LoginPage from './admin/LoginPage';
+import AdminDashboard from './admin/AdminDashboard';
+import ProtectedRoute from './components/ProtectedRoute';
+
+const PublicLayout = () => {
   useEffect(() => {
-    // Smooth scroll behavior
     const handleSmoothScroll = (e) => {
       const target = e.target.closest('a[href^="#"]');
       if (target) {
@@ -33,7 +38,7 @@ function App() {
   }, []);
 
   return (
-    <div className="relative bg-background">
+    <div className="relative bg-background transition-colors duration-300">
       <Navbar />
       <Hero />
       <About />
@@ -44,6 +49,29 @@ function App() {
       <Contact />
       <Footer />
     </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Public Portfolio Route */}
+        <Route path="/" element={<PublicLayout />} />
+
+        {/* Admin Routes */}
+        <Route path="/masteradmin/login" element={<LoginPage />} />
+        <Route 
+          path="/masteradmin" 
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path="/masteradmin/*" element={<Navigate to="/masteradmin" replace />} />
+      </Routes>
+    </Router>
   );
 }
 

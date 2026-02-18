@@ -1,73 +1,31 @@
-# Professional Portfolio System
+# Portfolio v2 (Supabase CMS)
 
-A high-performance, minimalist portfolio platform engineered with React, Vite, and Tailwind CSS v4. This project implements a sophisticated design language focused on professional aesthetics, optimized motion systems, and precise typographic hierarchy.
+A high-performance, premium portfolio website built with Vite, React, Tailwind CSS v4, and Supabase. This version introduces a private, production-ready CMS for managing all professional content.
 
-## Core Features
+## Architecture
 
-- **Professional Aesthetic**: High-contrast, light-themed design architecture optimized for visual clarity and professional impact.
-- **Dynamic Content Delivery**: Implementation of a custom `TypingEffect` system for progressive character rendering in the hero section.
-- **Engineered Typography**: Advanced typographic scaling utilizing Space Grotesk for display elements and Inter for high-readability body content.
-- **Modular Component Architecture**:
-  - **Hero Interface**: Optimized two-column layout featuring responsive spatial distribution and abstract visual elements.
-  - **Biographical Section**: Narrative-driven interface with integrated asset loading and custom grayscale-to-color transition protocols.
-  - **Project Showcase**: Grid-based display system with shadow-elevation logic and transition states.
-  - **Research Documentation**: Specialized interface for academic publications and cybersecurity research data.
-  - **Technical Matrix**: Categorized technical expertise manifest with a unified branding system.
-- **Advanced Motion Systems**: Performance-optimized scroll reveal animations and synchronized navigation transitions.
-- **Unified Branding**: Comprehensive integration of "AS ." visual identity across navigation, footer, and system favicon.
+- **Frontend**: React 18+ with Vite
+- **Styling**: Tailwind CSS v4 (Modern, utility-first)
+- **CMS / Backend**: Supabase (PostgreSQL + Auth + RLS)
+- **Animations**: Framer Motion (Fluid, premium transitions)
 
-## Technical Framework
+## Key Features
 
-- **Frontend Environment**: React 19
-- **Build Infrastructure**: Vite 7
-- **Styling Architecture**: Tailwind CSS v4 (CSS-first configuration)
-- **Animation Engine**: Framer Motion
-- **Typeface Systems**: Space Grotesk and Inter
+- **Dynamic Content**: Every section (Hero, Projects, Skills, Research) is powered by Supabase.
+- **Admin Dashboard**: Secure management at `/masteradmin` with email/password authentication.
+- **Premium Design**: Dark mode support, custom scrollbars, and high-quality typography.
+- **Secured Data**: Row Level Security (RLS) ensures only YOU can modify your portfolio data.
 
-## Deployment and Installation
+## Setup Instructions
 
-### Infrastructure Requirements
+1. **Environment**: Create a `.env` file with your `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
+2. **Database**: Execute the SQL provided in the CMS implementation docs to initialize your tables.
+3. **Admin User**: Create an admin user in the Supabase Auth dashboard.
+4. **Run**: `npm install` followed by `npm run dev`.
 
-- Node.js (v18.0.0 or higher)
-- Package Manager (npm, yarn, or pnpm)
+## Directory Structure
 
-### Execution Sequence
-
-1.  **Clone Documentation**
-
-    ```bash
-    git clone https://github.com/yourusername/portfolio.git
-    cd portfolio
-    ```
-
-2.  **Dependency Initialization**
-
-    ```bash
-    npm install
-    ```
-
-3.  **Development Environment**
-
-    ```bash
-    npm run dev
-    ```
-
-4.  **Production Compilation**
-    ```bash
-    npm run build
-    ```
-
-## Design Architecture
-
-The platform utilizes a modern Tailwind v4 "CSS-first" design system:
-
-- **Variable Definitions**: `src/index.css` contains the centralized theme architecture, color tokens, and utility layers.
-- **System Orchestration**: `src/App.jsx` manages the synchronized section-based architectural flow.
-
-## Documentation License
-
-This project is licensed under the MIT License. Detailed terms are available in the LICENSE file.
-
----
-
-Developed by Anirbaan Sarkar
+- `src/admin`: Private CMS modules and dashboard.
+- `src/components`: Reusable, dynamic UI sections.
+- `src/lib`: Core service initializations (Supabase).
+- `src/data`: (Deprecated) Static JSON data for fallback only.

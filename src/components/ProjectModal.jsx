@@ -44,7 +44,7 @@ const ProjectModal = ({ project, onClose }) => {
           <div className="p-8 md:p-12 space-y-12">
             {/* Tags */}
             <div className="flex flex-wrap gap-3">
-              {project.tags.map((tag) => (
+              {Array.isArray(project.tags) && project.tags.map((tag) => (
                 <span
                   key={tag}
                   className="px-5 py-2 glass text-accent-red border border-accent-red/30 rounded-full text-sm font-medium"
@@ -63,22 +63,28 @@ const ProjectModal = ({ project, onClose }) => {
             </div>
 
             {/* Case Study */}
-            {project.caseStudy && (
+            {(project.caseStudy || project.case_study) && (
               <div className="grid gap-8">
-                <div className="glass rounded-xl p-8 border-l-4 border-accent-red">
-                  <h4 className="font-serif font-bold text-xl mb-3 text-accent-red">Challenge</h4>
-                  <p className="text-lg text-text-secondary">{project.caseStudy.challenge}</p>
-                </div>
+                {(project.caseStudy?.challenge || project.case_study?.challenge) && (
+                  <div className="glass rounded-xl p-8 border-l-4 border-accent-red">
+                    <h4 className="font-serif font-bold text-xl mb-3 text-accent-red">Challenge</h4>
+                    <p className="text-lg text-text-secondary">{project.caseStudy?.challenge || project.case_study?.challenge}</p>
+                  </div>
+                )}
 
-                <div className="glass rounded-xl p-8 border-l-4 border-accent-violet">
-                  <h4 className="font-serif font-bold text-xl mb-3 text-accent-violet">Solution</h4>
-                  <p className="text-lg text-text-secondary">{project.caseStudy.solution}</p>
-                </div>
+                {(project.caseStudy?.solution || project.case_study?.solution) && (
+                  <div className="glass rounded-xl p-8 border-l-4 border-accent-violet">
+                    <h4 className="font-serif font-bold text-xl mb-3 text-accent-violet">Solution</h4>
+                    <p className="text-lg text-text-secondary">{project.caseStudy?.solution || project.case_study?.solution}</p>
+                  </div>
+                )}
 
-                <div className="glass rounded-xl p-8 border-l-4 border-accent-cyan">
-                  <h4 className="font-serif font-bold text-xl mb-3 text-accent-cyan">Impact</h4>
-                  <p className="text-lg text-text-secondary">{project.caseStudy.impact}</p>
-                </div>
+                {(project.caseStudy?.impact || project.case_study?.impact) && (
+                  <div className="glass rounded-xl p-8 border-l-4 border-accent-cyan">
+                    <h4 className="font-serif font-bold text-xl mb-3 text-accent-cyan">Impact</h4>
+                    <p className="text-lg text-text-secondary">{project.caseStudy?.impact || project.case_study?.impact}</p>
+                  </div>
+                )}
               </div>
             )}
 

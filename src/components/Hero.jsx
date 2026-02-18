@@ -1,15 +1,59 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { supabase } from '../lib/supabase';
 import TypingEffect from './TypingEffect';
 
 const Hero = () => {
   const [nameDone, setNameDone] = useState(false);
-  const interests = [
-    "a Computer Science student.",
-    "a UI/UX designer.",
-    "a Web developer.",
-    "a Researcher."
-  ];
+  const [content, setContent] = useState({
+    greeting: "Building with intelligence",
+    name: "Anirbaan\nSarkar",
+    subtext: "Designing thoughtful experiences",
+    interests: [
+      "a Computer Science student.",
+      "a UI/UX designer.",
+      "a Web developer.",
+      "a Researcher."
+    ],
+    description: "A Computer Science student obsessive about the intersection of code and aesthetics, dedicated to building systems that are both functional and emotionally resonant."
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchHeroContent = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('sections')
+          .select('content_json')
+          .eq('section_type', 'hero_main')
+          .eq('enabled', true)
+          .single();
+        
+        if (!error && data?.content_json) {
+          // Merge with defaults to ensure interests is always an array
+          setContent(prev => ({
+            ...prev,
+            ...data.content_json,
+            interests: Array.isArray(data.content_json.interests) 
+              ? data.content_json.interests 
+              : prev.interests
+          }));
+        }
+      } catch (err) {
+        console.error('Error fetching hero content:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchHeroContent();
+  }, []);
+
+  if (loading) return (
+    <div className="min-h-[90vh] flex items-center justify-center bg-background">
+      <div className="w-8 h-8 border-4 border-accent-blue border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
 
   return (
     <section id="hero" className="relative min-h-[90vh] flex items-center bg-background overflow-hidden border-b border-border">
@@ -31,11 +75,11 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="text-accent-blue font-display font-semibold tracking-wide uppercase text-sm"
             >
-              Building with intelligence
+              {content.greeting}
             </motion.p>
             <h1 className="text-[clamp(3rem,11vw,9rem)] font-bold leading-[0.8] tracking-tighter">
               <TypingEffect 
-                words={["Anirbaan\nSarkar"]} 
+                words={[content.name]} 
                 speed={150} 
                 delay={4000} 
                 loop={true} 
@@ -48,8 +92,8 @@ const Hero = () => {
               transition={{ duration: 1 }}
               className="text-2xl md:text-3xl text-muted font-light leading-tight"
             >
-              Designing thoughtful experiences <br className="hidden md:block" />
-              as <TypingEffect words={interests} start={nameDone} speed={120} />
+              {content.subtext} <br className="hidden md:block" />
+              as <TypingEffect words={content.interests || []} start={nameDone} speed={120} />
             </motion.div>
           </div>
 
@@ -59,7 +103,7 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
             className="text-xl text-muted max-w-xl font-light leading-relaxed"
           >
-            A Computer Science student obsessive about the intersection of code and aesthetics, dedicated to building systems that are both functional and emotionally resonant.
+            {content.description}
           </motion.p>
 
           <motion.div
