@@ -1,37 +1,74 @@
 import { motion } from 'framer-motion';
+import { Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
+  const socials = [
+    { icon: Github, href: 'https://github.com/anonically22', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/anirbaan-sarkar/', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://x.com/anirbaansarkar', label: 'X' },
+    { icon: Mail, href: 'mailto:anirbaandsarkar@gmail.com', label: 'Email' }
+  ];
+
   return (
-    <footer className="bg-background border-t border-border py-12 md:py-20">
+    <footer className="bg-background border-t border-border py-16">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="flex flex-col md:flex-row justify-between items-center gap-10"
-        >
-          <div className="space-y-2 text-center md:text-left">
-            <h4 className="text-2xl font-display font-bold text-foreground flex items-center gap-1 justify-center md:justify-start">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+          <div className="space-y-6 max-w-sm">
+            <h4 className="text-3xl font-display font-bold text-foreground flex items-center gap-1">
               AS<span className="w-2 h-2 rounded-full bg-accent-blue mt-2" />
             </h4>
-            <p className="text-sm text-muted font-light">© 2026 Anirbaan Sarkar. All rights reserved.</p>
-          </div>
-
-          <div className="flex items-center gap-10">
-            <p className="text-xs font-bold tracking-[0.3em] text-muted uppercase">
-              Built with <span className="text-accent-blue">React</span> + <span className="text-foreground">Motion</span>
+            <p className="text-muted font-light leading-relaxed">
+              Synthesizing code and aesthetics to build digital products that feel as good as they work.
             </p>
           </div>
+
+          <div className="grid grid-cols-2 gap-16">
+            <div className="space-y-6">
+              <h5 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Navigation</h5>
+              <ul className="space-y-4">
+                {['Projects', 'About', 'Contact'].map((item) => (
+                  <li key={item}>
+                    <a href={`#${item.toLowerCase()}`} className="text-muted hover:text-accent-blue transition-colors text-sm">
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-6">
+              <h5 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Socials</h5>
+              <div className="flex flex-wrap gap-4">
+                {socials.map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ y: -3 }}
+                    className="p-3 bg-accent-light text-muted hover:text-white hover:bg-accent-blue transition-all rounded-xl"
+                    aria-label={social.label}
+                  >
+                    <social.icon size={18} />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-xs text-muted font-medium tracking-wide">
+            © 2026 Anirbaan Sarkar. Crafted with <span className="text-accent-blue">❤</span> in TIU
+          </p>
 
           <motion.a
             href="#hero"
             whileHover={{ y: -5 }}
-            className="text-xs font-bold tracking-[0.5em] text-foreground hover:text-accent-blue transition-colors uppercase border-b border-border hover:border-accent-blue pb-1"
+            className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-foreground hover:text-accent-blue transition-colors uppercase py-2 px-4 glass-light rounded-full border border-border"
           >
-            Back to Top ↑
+            Back to Top <ArrowUp size={14} />
           </motion.a>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

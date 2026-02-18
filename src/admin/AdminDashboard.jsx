@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { useNavigate } from 'react-router-dom';
-import { LogOut, LayoutDashboard, Briefcase, BookOpen, Cpu, Settings } from 'lucide-react';
+import { LogOut, LayoutDashboard, Briefcase, BookOpen, Cpu, Settings, Palette } from 'lucide-react';
 import ProjectsManager from './modules/ProjectsManager';
 import SkillsManager from './modules/SkillsManager';
-import ResearchManager from './modules/ResearchManager';
 import SectionsManager from './modules/SectionsManager';
+import ThemeManager from './modules/ThemeManager';
+import AdminNavLink from '../components/AdminNavLink';
+import ThemeToggle from '../components/ThemeToggle';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -22,10 +24,10 @@ const AdminDashboard = () => {
         return <ProjectsManager />;
       case 'skills':
         return <SkillsManager />;
-      case 'research':
-        return <ResearchManager />;
       case 'sections':
         return <SectionsManager />;
+      case 'theme':
+        return <ThemeManager />;
       case 'dashboard':
       default:
         return (
@@ -36,7 +38,7 @@ const AdminDashboard = () => {
             </header>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="p-8 bg-white dark:bg-accent-light rounded-3xl border border-border shadow-sm">
+              <div className="p-8 glass-light rounded-3xl border border-border shadow-sm">
                 <h3 className="text-xl font-bold mb-4">Master CMS Plan</h3>
                 <p className="text-muted leading-relaxed">
                   You are now in full control of your portfolio content.
@@ -54,36 +56,32 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen flex">
       {/* Sidebar */}
-      <aside className="w-64 border-r border-border bg-white dark:bg-accent-light flex flex-col transition-colors duration-300">
-        <div className="p-8 border-b border-border">
+      <aside className="w-64 border-r border-border glass-light flex flex-col transition-colors duration-300">
+        <div className="p-8 border-b border-border flex items-center justify-between">
           <h1 className="text-xl font-display font-bold tracking-tighter flex items-center gap-2 text-foreground">
             AS<span className="w-2 h-2 rounded-full bg-accent-blue flex-shrink-0" />
             <span className="text-sm font-medium text-muted uppercase tracking-widest ml-2">CMS</span>
           </h1>
+          <ThemeToggle />
         </div>
 
         <nav className="flex-1 p-4 space-y-2">
           {[
             { id: 'dashboard', name: 'Dashboard', icon: LayoutDashboard },
             { id: 'projects', name: 'Projects', icon: Briefcase },
-            { id: 'research', name: 'Research', icon: BookOpen },
             { id: 'skills', name: 'Skills', icon: Cpu },
             { id: 'sections', name: 'Sections', icon: Settings },
+            { id: 'theme', name: 'Theme', icon: Palette },
           ].map((item) => (
-            <button
+            <AdminNavLink
               key={item.id}
+              name={item.name}
+              icon={item.icon}
+              active={activeTab === item.id}
               onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium ${
-                activeTab === item.id 
-                  ? 'text-accent-blue bg-accent-blue/10 dark:bg-accent-blue/20' 
-                  : 'text-muted hover:text-foreground hover:bg-background'
-              }`}
-            >
-              <item.icon size={20} />
-              {item.name}
-            </button>
+            />
           ))}
         </nav>
 
@@ -99,7 +97,7 @@ const AdminDashboard = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-12 overflow-y-auto">
+      <main className="flex-1 p-12 overflow-y-auto bg-background transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           {renderContent()}
         </div>

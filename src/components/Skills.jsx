@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { skills as staticSkills, skillCategories } from '../data/skills';
 import Section from './Section';
+import TypingEffect from './TypingEffect';
 
 const Skills = () => {
   const [skills, setSkills] = useState({});
@@ -15,7 +16,7 @@ const Skills = () => {
           .from('skills')
           .select('*')
           .order('order_index', { ascending: true });
-        
+
         if (!error && data && data.length > 0) {
           const grouped = data.reduce((acc, skill) => {
             if (!acc[skill.category]) acc[skill.category] = [];
@@ -49,7 +50,9 @@ const Skills = () => {
           >
             Technical Stack
           </motion.p>
-          <h2 className="text-display-lg font-bold">Tools & Tech.</h2>
+          <h2 className="text-display-lg font-bold">
+            <TypingEffect words={["Tools & Tech."]} />
+          </h2>
         </div>
 
         {loading ? (
@@ -78,7 +81,7 @@ const Skills = () => {
                   <span className={`w-3 h-3 rounded-full bg-accent-blue`} />
                   {category.name}
                 </h3>
-                
+
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
                   {(skills[category.key] || []).length > 0 ? (
                     (skills[category.key] || []).map((skill, skillIndex) => (

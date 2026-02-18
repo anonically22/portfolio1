@@ -31,7 +31,11 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/masteradmin/login" replace />;
   }
 
-  return children;
+  return (
+    <div className="bg-background min-h-screen transition-colors duration-300">
+      {children}
+    </div>
+  );
 };
 
 export default ProtectedRoute;

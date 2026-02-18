@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import Section from './Section';
+import TypingEffect from './TypingEffect';
 import profilePic from '../assets/2x4ou0.jpg';
 
 const About = () => {
@@ -28,13 +29,13 @@ const About = () => {
           .eq('section_type', 'about_main')
           .eq('enabled', true)
           .single();
-        
+
         if (!error && data?.content_json) {
           setContent(prev => ({
             ...prev,
             ...data.content_json,
-            paragraphs: Array.isArray(data.content_json.paragraphs) 
-              ? data.content_json.paragraphs 
+            paragraphs: Array.isArray(data.content_json.paragraphs)
+              ? data.content_json.paragraphs
               : prev.paragraphs
           }));
         }
@@ -67,9 +68,9 @@ const About = () => {
             className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-accent-light"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-accent-blue/10 to-transparent" />
-            <img 
-              src={profilePic} 
-              alt="Anirbaan Sarkar" 
+            <img
+              src={profilePic}
+              alt="Anirbaan Sarkar"
               className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
           </motion.div>
@@ -84,7 +85,7 @@ const About = () => {
           >
             <div className="space-y-4">
               <h2 className="text-display-md font-bold whitespace-pre-wrap">
-                {content.title}
+                <TypingEffect words={[content.title]} speed={50} delay={5000} loop={true} />
               </h2>
               <div className="w-20 h-1 bg-accent-blue" />
             </div>

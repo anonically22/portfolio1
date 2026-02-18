@@ -14,6 +14,17 @@ import Footer from './components/Footer';
 import LoginPage from './admin/LoginPage';
 import AdminDashboard from './admin/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
+import CursorFollower from './components/CursorFollower';
+
+const GlobalLayout = ({ children }) => {
+  return (
+    <div className="relative min-h-screen bg-background transition-colors duration-300">
+      <div className="global-glow" />
+      <CursorFollower />
+      {children}
+    </div>
+  );
+};
 
 const PublicLayout = () => {
   useEffect(() => {
@@ -38,40 +49,41 @@ const PublicLayout = () => {
   }, []);
 
   return (
-    <div className="relative bg-background transition-colors duration-300">
+    <>
       <Navbar />
       <Hero />
       <About />
       <Projects />
-      <Research />
       <Skills />
       <Certifications />
       <Contact />
       <Footer />
-    </div>
+    </>
   );
 };
 
 function App() {
   return (
     <Router>
-      <Routes>
-        {/* Public Portfolio Route */}
-        <Route path="/" element={<PublicLayout />} />
+      <GlobalLayout>
+        <Routes>
+          {/* Public Portfolio Route */}
+          <Route path="/" element={<PublicLayout />} />
 
-        {/* Admin Routes */}
-        <Route path="/admin" element={<Navigate to="/masteradmin/login" replace />} />
-        <Route path="/masteradmin/login" element={<LoginPage />} />
-        <Route 
-          path="/masteradmin" 
-          element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          } 
-        />
-        <Route path="/masteradmin/*" element={<Navigate to="/masteradmin" replace />} />
-      </Routes>
+          {/* Admin Routes */}
+          <Route path="/admin" element={<Navigate to="/masteradmin/login" replace />} />
+          <Route path="/masteradmin/login" element={<LoginPage />} />
+          <Route
+            path="/masteradmin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/masteradmin/*" element={<Navigate to="/masteradmin" replace />} />
+        </Routes>
+      </GlobalLayout>
     </Router>
   );
 }

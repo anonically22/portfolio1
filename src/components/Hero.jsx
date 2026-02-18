@@ -28,14 +28,14 @@ const Hero = () => {
           .eq('section_type', 'hero_main')
           .eq('enabled', true)
           .single();
-        
+
         if (!error && data?.content_json) {
           // Merge with defaults to ensure interests is always an array
           setContent(prev => ({
             ...prev,
             ...data.content_json,
-            interests: Array.isArray(data.content_json.interests) 
-              ? data.content_json.interests 
+            interests: Array.isArray(data.content_json.interests)
+              ? data.content_json.interests
               : prev.interests
           }));
         }
@@ -59,7 +59,7 @@ const Hero = () => {
     <section id="hero" className="relative min-h-[90vh] flex items-center bg-background overflow-hidden border-b border-border">
       {/* Soft Background Accent */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-accent-light/50 to-transparent pointer-events-none" />
-      
+
       <div className="container relative z-10 grid lg:grid-cols-2 gap-16 items-center pt-24 md:pt-32">
         {/* Left: Content */}
         <motion.div
@@ -78,15 +78,15 @@ const Hero = () => {
               {content.greeting}
             </motion.p>
             <h1 className="text-[clamp(3rem,11vw,9rem)] font-bold leading-[0.8] tracking-tighter">
-              <TypingEffect 
-                words={[content.name]} 
-                speed={150} 
-                delay={4000} 
-                loop={true} 
+              <TypingEffect
+                words={[content.name]}
+                speed={150}
+                delay={4000}
+                loop={true}
                 onComplete={() => setNameDone(true)}
               /> <span className="text-accent-blue font-light">.</span>
             </h1>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: nameDone ? 1 : 0 }}
               transition={{ duration: 1 }}
@@ -119,7 +119,7 @@ const Hero = () => {
               View Projects
             </a>
             <a
-              href="#contact"
+              href="mailto:anirbaandsarkar@gmail.com"
               className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-accent-light transition-all"
             >
               Let's talk

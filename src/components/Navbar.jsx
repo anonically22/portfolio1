@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
+import NavLink from './NavLink';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +17,6 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Projects', href: '#projects' },
     { name: 'About', href: '#about' },
-    { name: 'Research', href: '#research' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -25,9 +25,8 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-border py-4' : 'bg-transparent py-6'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 dark:bg-background/80 backdrop-blur-md border-b border-border py-4' : 'bg-transparent py-6'
+        }`}
     >
       <div className="container flex justify-between items-center">
         <a href="#hero" className="text-2xl font-display font-bold tracking-tighter text-foreground flex items-center gap-1">
@@ -37,16 +36,14 @@ const Navbar = () => {
         <div className="flex items-center gap-4 md:gap-8">
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted hover:text-foreground transition-colors"
-              >
-                {link.name}
-              </a>
+                name={link.name}
+              />
             ))}
           </div>
-          
+
           <ThemeToggle />
 
           <button className="md:hidden text-foreground p-1">

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { projects as staticProjects } from '../data/projects';
 import Section from './Section';
+import TypingEffect from './TypingEffect';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -16,7 +17,7 @@ const Projects = () => {
           .select('*')
           .order('pinned', { ascending: false })
           .order('order_index', { ascending: true });
-        
+
         if (!error && data && data.length > 0) {
           setProjects(data);
         } else {
@@ -45,7 +46,9 @@ const Projects = () => {
           >
             Selected Work
           </motion.p>
-          <h2 className="text-display-lg font-bold">Featured Case Studies.</h2>
+          <h2 className="text-display-lg font-bold">
+            <TypingEffect words={["Featured Case Studies."]} />
+          </h2>
         </div>
 
         {loading ? (
