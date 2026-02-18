@@ -1,15 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
+import { skills as staticSkills, skillCategories } from '../data/skills';
 import Section from './Section';
-
-const skillCategories = [
-  { name: "Frontend", key: "frontend", color: "blue" },
-  { name: "Backend", key: "backend", color: "violet" },
-  { name: "Database", key: "database", color: "cyan" },
-  { name: "Tools & Platforms", key: "tools", color: "blue" },
-  { name: "AI & Research", key: "aiResearch", color: "violet" }
-];
 
 const Skills = () => {
   const [skills, setSkills] = useState({});
@@ -23,16 +16,19 @@ const Skills = () => {
           .select('*')
           .order('order_index', { ascending: true });
         
-        if (!error && data) {
+        if (!error && data && data.length > 0) {
           const grouped = data.reduce((acc, skill) => {
             if (!acc[skill.category]) acc[skill.category] = [];
             acc[skill.category].push(skill.name);
             return acc;
           }, {});
           setSkills(grouped);
+        } else {
+          setSkills(staticSkills);
         }
       } catch (err) {
         console.error('Error fetching skills:', err);
+        setSkills(staticSkills);
       } finally {
         setLoading(false);
       }

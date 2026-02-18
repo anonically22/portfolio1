@@ -60,6 +60,7 @@ function App() {
         <Route path="/" element={<PublicLayout />} />
 
         {/* Admin Routes */}
+        <Route path="/admin" element={<Navigate to="/masteradmin/login" replace />} />
         <Route path="/masteradmin/login" element={<LoginPage />} />
         <Route 
           path="/masteradmin" 

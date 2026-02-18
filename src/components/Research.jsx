@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
+import { researchPapers as staticPapers } from '../data/research';
 import Section from './Section';
 
 const Research = () => {
@@ -15,11 +16,14 @@ const Research = () => {
           .select('*')
           .order('order_index', { ascending: true });
         
-        if (!error && data) {
+        if (!error && data && data.length > 0) {
           setPapers(data);
+        } else {
+          setPapers(staticPapers);
         }
       } catch (err) {
         console.error('Error fetching papers:', err);
+        setPapers(staticPapers);
       } finally {
         setLoading(false);
       }

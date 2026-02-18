@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '../lib/supabase';
+import { projects as staticProjects } from '../data/projects';
 import Section from './Section';
 
 const Projects = () => {
@@ -16,11 +17,14 @@ const Projects = () => {
           .order('pinned', { ascending: false })
           .order('order_index', { ascending: true });
         
-        if (!error && data) {
+        if (!error && data && data.length > 0) {
           setProjects(data);
+        } else {
+          setProjects(staticProjects);
         }
       } catch (err) {
         console.error('Error fetching projects:', err);
+        setProjects(staticProjects);
       } finally {
         setLoading(false);
       }
