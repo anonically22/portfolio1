@@ -26,7 +26,7 @@ const ResearchManager = () => {
       .from('research_papers')
       .select('*')
       .order('order_index', { ascending: true });
-    
+
     if (error) console.error('Error fetching papers:', error);
     else setPapers(data || []);
     setLoading(false);
@@ -84,10 +84,10 @@ const ResearchManager = () => {
             <div className="p-8 bg-white dark:bg-accent-light rounded-3xl border border-border shadow-sm space-y-6">
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-muted">Paper Title</label>
-                <input 
+                <input
                   required
                   value={currentPaper.title}
-                  onChange={(e) => setCurrentPaper({...currentPaper, title: e.target.value})}
+                  onChange={(e) => setCurrentPaper({ ...currentPaper, title: e.target.value })}
                   className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-accent-blue outline-none"
                   placeholder="The impact of AI on..."
                 />
@@ -95,11 +95,11 @@ const ResearchManager = () => {
 
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-muted">Abstract</label>
-                <textarea 
+                <textarea
                   required
                   rows={6}
                   value={currentPaper.abstract}
-                  onChange={(e) => setCurrentPaper({...currentPaper, abstract: e.target.value})}
+                  onChange={(e) => setCurrentPaper({ ...currentPaper, abstract: e.target.value })}
                   className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-accent-blue outline-none resize-none"
                   placeholder="Summarize your research..."
                 />
@@ -111,19 +111,20 @@ const ResearchManager = () => {
             <div className="p-8 bg-white dark:bg-accent-light rounded-3xl border border-border shadow-sm space-y-6">
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-muted">Supervisor</label>
-                <input 
+                <input
                   value={currentPaper.supervisor}
-                  onChange={(e) => setCurrentPaper({...currentPaper, supervisor: e.target.value})}
+                  onChange={(e) => setCurrentPaper({ ...currentPaper, supervisor: e.target.value })}
                   className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-accent-blue outline-none"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-muted">Publication Status</label>
-                <select 
+                <select
                   value={currentPaper.publication_status}
-                  onChange={(e) => setCurrentPaper({...currentPaper, publication_status: e.target.value})}
+                  onChange={(e) => setCurrentPaper({ ...currentPaper, publication_status: e.target.value })}
                   className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-accent-blue outline-none"
                 >
+                  <option>Ongoing</option>
                   <option>Published</option>
                   <option>In Review</option>
                   <option>Pre-print</option>
@@ -132,16 +133,16 @@ const ResearchManager = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-bold uppercase tracking-wider text-muted">PDF/Document Link</label>
-                <input 
+                <input
                   value={currentPaper.pdf_url}
-                  onChange={(e) => setCurrentPaper({...currentPaper, pdf_url: e.target.value})}
+                  onChange={(e) => setCurrentPaper({ ...currentPaper, pdf_url: e.target.value })}
                   className="w-full px-4 py-3 bg-background border border-border rounded-xl focus:ring-2 focus:ring-accent-blue outline-none"
                   placeholder="https://..."
                 />
               </div>
             </div>
 
-            <button 
+            <button
               type="submit"
               disabled={saving}
               className="w-full py-5 bg-accent-blue text-white font-bold rounded-3xl hover:bg-accent-blue/90 transition-all shadow-xl shadow-accent-blue/20 flex items-center justify-center gap-3 disabled:opacity-70"
@@ -162,7 +163,7 @@ const ResearchManager = () => {
           <h2 className="text-3xl font-display font-bold tracking-tight">Research</h2>
           <p className="text-muted">Manage your academic and technical publications.</p>
         </div>
-        <button 
+        <button
           onClick={() => { setCurrentPaper({ title: '', abstract: '', full_content: '', pdf_url: '', supervisor: '', publication_status: 'Published' }); setIsEditing(true); }}
           className="flex items-center gap-2 px-6 py-3 bg-accent-blue text-white font-bold rounded-2xl hover:bg-accent-blue/90 transition-all shadow-lg hover:shadow-accent-blue/20"
         >

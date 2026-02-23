@@ -54,6 +54,7 @@ const PublicLayout = () => {
       <Hero />
       <About />
       <Projects />
+      <Research />
       <Skills />
       <Certifications />
       <Contact />

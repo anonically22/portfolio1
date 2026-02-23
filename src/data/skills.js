@@ -32,13 +32,6 @@ export const skills = {
     "VS Code",
     "Figma",
     "npm/yarn"
-  ],
-  aiResearch: [
-    "Machine Learning",
-    "AI Integration",
-    "Natural Language Processing",
-    "Cybersecurity Research",
-    "Data Analysis"
   ]
 };
 
@@ -46,6 +39,5 @@ export const skillCategories = [
   { name: "Frontend", key: "frontend", color: "blue" },
   { name: "Backend", key: "backend", color: "violet" },
   { name: "Database", key: "database", color: "cyan" },
-  { name: "Tools & Platforms", key: "tools", color: "blue" },
-  { name: "AI & Research", key: "aiResearch", color: "violet" }
+  { name: "Tools & Platforms", key: "tools", color: "blue" }
 ];

@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import { LogOut, LayoutDashboard, Briefcase, BookOpen, Cpu, Settings, Palette } from 'lucide-react';
 import ProjectsManager from './modules/ProjectsManager';
+import ResearchManager from './modules/ResearchManager';
 import SkillsManager from './modules/SkillsManager';
 import SectionsManager from './modules/SectionsManager';
 import ThemeManager from './modules/ThemeManager';
@@ -22,6 +23,8 @@ const AdminDashboard = () => {
     switch (activeTab) {
       case 'projects':
         return <ProjectsManager />;
+      case 'research':
+        return <ResearchManager />;
       case 'skills':
         return <SkillsManager />;
       case 'sections':
@@ -71,6 +74,7 @@ const AdminDashboard = () => {
           {[
             { id: 'dashboard', name: 'Dashboard', icon: LayoutDashboard },
             { id: 'projects', name: 'Projects', icon: Briefcase },
+            { id: 'research', name: 'Research', icon: BookOpen },
             { id: 'skills', name: 'Skills', icon: Cpu },
             { id: 'sections', name: 'Sections', icon: Settings },
             { id: 'theme', name: 'Theme', icon: Palette },
