@@ -58,7 +58,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-muted font-medium tracking-wide">
-            © 2026 Anirbaan Sarkar. Crafted with <span className="text-accent-blue">❤</span>
+            © 2026 Anirbaan Sarkar & Anonically22. Crafted with <span className="text-accent-blue">❤</span>
           </p>
 
           <motion.a
